@@ -1,64 +1,83 @@
-
 const playlist = [
-    {
-        id: "hR0MOXXNCGA", // YouTube Video ID
-        title: "Chand Si Mehbooba Ho Meri",
-        artist: "Mukesh"
-    },
-    {
-        id: "hEatV9WPK-o",
-        title: "Yeh Reshmi Zulfein",
-        artist: "Mohammed Rafi"
-    },
-    {
-        id: "s-bdclQyWGM",
-        title: "Yeh Chand Sa Roshan Chehra",
-        artist: "Mohammed Rafi"
-    },
-    {
-        id: "8drSZlOo3Uo",
-        title: "Chehra Hai Ya Chand Khila Hai",
-        artist: "R.D.Burman"
-    }
-    
+    { id: "hR0MOXXNCGA", title: "Chand Si Mehbooba Ho Meri", artist: "Mukesh" },
+    { id: "hEatV9WPK-o", title: "Yeh Reshmi Zulfein", artist: "Mohammed Rafi" },
+    { id: "s-bdclQyWGM", title: "Yeh Chand Sa Roshan Chehra", artist: "Mohammed Rafi" },
+    { id: "8drSZlOo3Uo", title: "Chehra Hai Ya Chand Khila Hai", artist: "R.D.Burman" },
+    { id: "hT_nvWreIhg", title: "Mere Sapno Ki Rani", artist: "Kishore Kumar" },
+    { id: "v_yTphvyiPU", title: "Likhe Jo Khat Tujhe", artist: "Mohammed Rafi" }
 ];
 
-function init() {
-    const now = new Date();
-    
-    // 1. Set Date (English format looks better for Hinglish)
-    const dateOptions = { weekday: 'long', day: 'numeric', month: 'short' };
-    document.getElementById('date-display').innerText = now.toLocaleDateString('en-GB', dateOptions);
-
-    // 2. Logic to pick today's song
-    // Ye har din automatically change hoga
-    const dayIndex = Math.floor(now / (1000 * 60 * 60 * 24)); 
-    const songIndex = dayIndex % playlist.length;
-    const todaysSong = playlist[songIndex];
-
-    // 3. Update Text
-    document.getElementById('song-title').innerText = todaysSong.title;
-    document.getElementById('song-artist').innerText = todaysSong.artist;
-
-    // 4. Background Update
-    const bgImage = document.getElementById('bg-image');
-    // Using high-res thumbnail
-    bgImage.style.backgroundImage = `url('https://img.youtube.com/vi/${todaysSong.id}/maxresdefault.jpg')`;
-
-    // 5. Load Video
-    const playerDiv = document.getElementById('player');
-    playerDiv.innerHTML = `
-        <iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube.com/embed/${todaysSong.id}?theme=dark&color=white&rel=0" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
+// 1. Helper for Cards
+function createMiniCard(song) {
+    return `
+        <div class="mini-card" onclick="playSelected('${song.id}', '${song.title}', '${song.artist}')"> 
+            <img src="https://img.youtube.com/vi/${song.id}/mqdefault.jpg">
+            <p><strong>${song.title}</strong></p>
+        </div>
     `;
 }
 
-// Start kar bhai
-init();
+// 2. Play Manual Selection
+function playSelected(id, title, artist) {
+    document.getElementById('song-title').innerText = title;
+    document.getElementById('song-artist').innerText = artist;
+    document.getElementById('bg-image').style.backgroundImage = `url('https://img.youtube.com/vi/${id}/maxresdefault.jpg')`;
+    document.getElementById('player').innerHTML = `
+        <iframe width="100%" height="100%" 
+            src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" 
+            frameborder="0" allowfullscreen></iframe>`;
+}
+
+// 3. Shuffle & Recommendations
+function refreshRecommendations() {
+    const currentTitle = document.getElementById('song-title').innerText;
+    const others = playlist.filter(s => s.title !== currentTitle);
+    
+    // Fisher-Yates Shuffle
+    for (let i = others.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [others[i], others[j]] = [others[j], others[i]];
+    }
+    
+    const recs = others.slice(0, 3);
+    document.getElementById('recommendations').innerHTML = recs.map(s => createMiniCard(s)).join('');
+}
+
+// 4. History Tracking
+function handleHistory(todaysSong) {
+    let history = JSON.parse(localStorage.getItem('vibe_history')) || {};
+    const todayStr = new Date().toDateString();
+    
+    // Save today
+    history[todayStr] = todaysSong;
+    localStorage.setItem('vibe_history', JSON.stringify(history));
+
+    // Check Yesterday
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toDateString();
+
+    const historyBox = document.getElementById('history-list');
+    if (history[yesterdayStr]) {
+        historyBox.innerHTML = createMiniCard(history[yesterdayStr]);
+    } else {
+        historyBox.innerHTML = "<p style='font-size:0.7rem; color:gray;'>Kal wapas aana history dekhne!</p>";
+    }
+}
+
+// 5. Main Init
+function init() {
+    const now = new Date();
+    const dateOptions = { weekday: 'long', day: 'numeric', month: 'short' };
+    document.getElementById('date-display').innerText = now.toLocaleDateString('en-GB', dateOptions);
+
+    const dayIndex = Math.floor(now / (1000 * 60 * 60 * 24)); 
+    const todaysSong = playlist[dayIndex % playlist.length];
+
+    playSelected(todaysSong.id, todaysSong.title, todaysSong.artist);
+    
+    handleHistory(todaysSong);
+    refreshRecommendations();
+}
+
+window.onload = init;
