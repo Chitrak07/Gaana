@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aaj Ka Vibe</title>
+    <title>Aaj Ka Gaana</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     <div class="glass-card">
         <header>
             <div class="date-display" id="date-display"></div>
-            <h1>Aaj Ka Vibe 🎵</h1>
+            <h1>Aaj Ka Gaana 🎵</h1>
         </header>
 
         <div class="video-container">
@@ -28,8 +28,22 @@
         <div class="song-info">
             <h2 id="song-title">Loading ho raha hai...</h2>
             <p id="song-artist">Bas ek second ruk jao.</p>
-            <p class="footer-note">Kal wapas aana, naya song milega!</p>
         </div>
+
+        <div class="extra-sections">
+            <div class="section-header">
+                <h3>Aur Gaane 🎧</h3>
+                <button id="shuffle-btn" onclick="refreshRecommendations()">Shuffle 🔀</button>
+            </div>
+            <div id="recommendations" class="horizontal-list"></div>
+
+            <div class="section-header">
+                <h3>Kal ka Gaana ⏳</h3>
+            </div>
+            <div id="history-list" class="horizontal-list"></div>
+        </div>
+
+        <p class="footer-note">Kal wapas aana, naya song milega!</p>
     </div>
 </main>
 
