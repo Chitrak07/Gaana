@@ -1,10 +1,10 @@
 const playlist = [
     { id: "hR0MOXXNCGA", title: "Chand Si Mehbooba Ho Meri", artist: "Mukesh" },
     { id: "hEatV9WPK-o", title: "Yeh Reshmi Zulfein", artist: "Mohammed Rafi" },
-    { id: "s-bdclQyWGM", title: "Yeh Chand Sa Roshan Chehra", artist: "Mohammed Rafi" },
+    { id: "VueN49P7JyU", title: "Yeh Chand Sa Roshan Chehra", artist: "Mohammed Rafi" },
     { id: "8drSZlOo3Uo", title: "Chehra Hai Ya Chand Khila Hai", artist: "R.D.Burman" },
-    { id: "hT_nvWreIhg", title: "Mere Sapno Ki Rani", artist: "Kishore Kumar" },
-    { id: "v_yTphvyiPU", title: "Likhe Jo Khat Tujhe", artist: "Mohammed Rafi" }
+    { id: "9PdSmDRGIwM", title: "Mere Sapno Ki Rani", artist: "Kishore Kumar" },
+    { id: "L4_b0ulPqdo", title: "Likhe Jo Khat Tujhe", artist: "Mohammed Rafi" }
 ];
 
 // 1. Helper for Cards
@@ -81,3 +81,4 @@ function init() {
 }
 
 window.onload = init;
+
