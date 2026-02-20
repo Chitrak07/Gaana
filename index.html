@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Aaj Ka Gaana</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +34,11 @@
         <div class="extra-sections">
             <div class="section-header">
                 <h3>Aur Gaane 🎧</h3>
-                <button id="shuffle-btn" onclick="refreshRecommendations()">Shuffle 🔀</button>
+                <div class="controls">
+                    <button id="shuffle-toggle-btn" class="nav-btn" onclick="toggleShuffle()">🔀 OFF</button>
+                    <button class="nav-btn" onclick="playPrev()">⏮ Prev</button>
+                    <button class="nav-btn" onclick="playNext()">Next ⏭</button>
+                </div>
             </div>
             <div id="recommendations" class="horizontal-list"></div>
 
