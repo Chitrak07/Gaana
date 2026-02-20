@@ -10,7 +10,9 @@ const playlist = [
     { id: "1lyJyjSezC8", title: "Chhup Gaye Sare Nazare", artist: "Lata Mangeshkar & Mohd.Rafi" },
     { id: "GjPGVVebVUc", title: "Zindagi Ek Safar Hai Suhana", artist: "Kishore Kumar" },
     { id: "UNjhqT_hlbg", title: "Chala Jata Hoon", artist: "Kishore Kumar" },
-    { id: "RBX_29oGqec", title: "Chale Jaise Hawaien", artist: "K.K., Vasundhara Das" }
+    { id: "RBX_29oGqec", title: "Chale Jaise Hawaien", artist: "K.K., Vasundhara Das" },
+    { id: "lK7j4q9vVpE", title: "Tu Tu Hai Wahi", artist: "Asha Bhosle, Kishore Kumar" },
+    { id: "7dO_MS9tZ5E", title: "Dekha Ek Khwab", artist: "Kishore Kumar, Lata Mangeshkar" },
 ];
 
 // 1. Helper for Cards
@@ -87,6 +89,7 @@ function init() {
 }
 
 window.onload = init;
+
 
 
 
