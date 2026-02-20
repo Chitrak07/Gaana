@@ -4,8 +4,13 @@ const playlist = [
     { id: "VueN49P7JyU", title: "Yeh Chand Sa Roshan Chehra", artist: "Mohammed Rafi" },
     { id: "8drSZlOo3Uo", title: "Chehra Hai Ya Chand Khila Hai", artist: "R.D.Burman" },
     { id: "9PdSmDRGIwM", title: "Mere Sapno Ki Rani", artist: "Kishore Kumar" },
-    { id: "L4_b0ulPqdo", title: "Likhe Jo Khat Tujhe", artist: "Mohammed Rafi" },
-    { id: "i8cm_ide9EY", title: "Ude jab jab zulfen teri Teri", artist: "Mohammed Rafi | Asha Bhosle" }
+    { id: "3wGLsjgTx4c", title: "Likhe Jo Khat Tujhe(New)", artist: "Sanam" },
+    { id: "i8cm_ide9EY", title: "Ude jab jab zulfen teri Teri", artist: "Mohammed Rafi | Asha Bhosle" },
+    { id: "dcFIB9GJXz4", title: "Ajab Si", artist: "Vishal-Shekhar" },
+    { id: "1lyJyjSezC8", title: "Chhup Gaye Sare Nazare", artist: "Lata Mangeshkar & Mohd.Rafi" },
+    { id: "GjPGVVebVUc", title: "Zindagi Ek Safar Hai Suhana", artist: "Kishore Kumar" },
+    { id: "UNjhqT_hlbg", title: "Chala Jata Hoon", artist: "Kishore Kumar" },
+    { id: "RBX_29oGqec", title: "Chale Jaise Hawaien", artist: "K.K., Vasundhara Das" }
 ];
 
 // 1. Helper for Cards
@@ -82,5 +87,6 @@ function init() {
 }
 
 window.onload = init;
+
 
 
