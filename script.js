@@ -3,6 +3,11 @@ const playlist = [
     { id: "hEatV9WPK-o", title: "Yeh Reshmi Zulfein", artist: "Mohammed Rafi" },
     { id: "VueN49P7JyU", title: "Yeh Chand Sa Roshan Chehra", artist: "Mohammed Rafi" },
     { id: "1lyJyjSezC8", title: "Chhup Gaye Sare Nazare", artist: "Lata Mangeshkar & Mohd.Rafi" },
+    { id: "ieu6xnwJxdA", title: "Kitaben Bahut Si", artist: "Asha Bhosle & Vinod Rathod" },
+    { id: "eM8Mjuq4MwQ", title: "Aankhein Khuli", artist: "Lata Mangeshkar, Udit Narayan" },
+    { id: "kzTWRX9Dhrg", title: "Chalte Chalte", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
+    { id: "bC7RmYYMqTw", title: "Pairon Mein Bandhan Hai", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
+    { id: "OpLD97fG9Hw", title: "Soni Soni", artist: "Udit Narayan, Jaspinder Narula, Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
     { id: "GjPGVVebVUc", title: "Zindagi Ek Safar Hai Suhana", artist: "Kishore Kumar" },
     { id: "UNjhqT_hlbg", title: "Chala Jata Hoon", artist: "Kishore Kumar" },
     { id: "RBX_29oGqec", title: "Chale Jaise Hawaien", artist: "K.K., Vasundhara Das" },
@@ -13,11 +18,6 @@ const playlist = [
     { id: "3wGLsjgTx4c", title: "Likhe Jo Khat Tujhe(New)", artist: "Sanam" },
     { id: "i8cm_ide9EY", title: "Ude jab jab zulfen teri Teri", artist: "Mohammed Rafi | Asha Bhosle" },
     { id: "dcFIB9GJXz4", title: "Ajab Si", artist: "Vishal-Shekhar" },
-    { id: "ieu6xnwJxdA", title: "Kitaben Bahut Si", artist: "Asha Bhosle & Vinod Rathod" },
-    { id: "eM8Mjuq4MwQ", title: "Aankhein Khuli", artist: "Lata Mangeshkar, Udit Narayan" },
-    { id: "kzTWRX9Dhrg", title: "Chalte Chalte", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
-    { id: "bC7RmYYMqTw", title: "Pairon Mein Bandhan Hai", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
-    { id: "OpLD97fG9Hw", title: "Soni Soni", artist: "Udit Narayan, Jaspinder Narula, Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" }
 ];
 
 let currentIndex = 0; 
@@ -138,4 +138,5 @@ function init() {
 }
 
 window.onload = init;
+
 
