@@ -17,7 +17,7 @@ const playlist = [
     { id: "9PdSmDRGIwM", title: "Mere Sapno Ki Rani", artist: "Kishore Kumar" },
     { id: "3wGLsjgTx4c", title: "Likhe Jo Khat Tujhe(New)", artist: "Sanam" },
     { id: "i8cm_ide9EY", title: "Ude jab jab zulfen teri Teri", artist: "Mohammed Rafi | Asha Bhosle" },
-    { id: "dcFIB9GJXz4", title: "Ajab Si", artist: "Vishal-Shekhar" },
+    { id: "dcFIB9GJXz4", title: "Ajab Si", artist: "Vishal-Shekhar" }
 ];
 
 let currentIndex = 0; 
@@ -138,5 +138,6 @@ function init() {
 }
 
 window.onload = init;
+
 
 
