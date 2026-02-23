@@ -6,7 +6,9 @@ const playlist = [
     { id: "ieu6xnwJxdA", title: "Kitaben Bahut Si", artist: "Asha Bhosle & Vinod Rathod" },
     { id: "eM8Mjuq4MwQ", title: "Aankhein Khuli", artist: "Lata Mangeshkar, Udit Narayan" },
     { id: "Mo5tQDcs__g", title: "Aao Milo Chalen", artist: "Shaan" },
+    { id: "DA3GyfDY0Aw", title: "Tera Naam Liya Tujhe Yaad Kiya", artist: "Manhar Udhas, Anuradha Paudwal" },
     { id: "kzTWRX9Dhrg", title: "Chalte Chalte", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
+    { id: "DA3GyfDY0Aw", title: "Tera Naam Liya Tujhe Yaad Kiya", artist: "Manhar Udhas, Anuradha Paudwal" },
     { id: "bC7RmYYMqTw", title: "Pairon Mein Bandhan Hai", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
     { id: "OpLD97fG9Hw", title: "Soni Soni", artist: "Udit Narayan, Jaspinder Narula, Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
     { id: "GjPGVVebVUc", title: "Zindagi Ek Safar Hai Suhana", artist: "Kishore Kumar" },
@@ -139,6 +141,7 @@ function init() {
 }
 
 window.onload = init;
+
 
 
 
