@@ -1,8 +1,8 @@
 const playlist = [
-    { id: "hR0MOXXNCGA", title: "Chand Si Mehbooba Ho Meri", artist: "Mukesh" },
-    { id: "hEatV9WPK-o", title: "Yeh Reshmi Zulfein", artist: "Mohammed Rafi" },
-    { id: "VueN49P7JyU", title: "Yeh Chand Sa Roshan Chehra", artist: "Mohammed Rafi" },
-    { id: "1lyJyjSezC8", title: "Chhup Gaye Sare Nazare", artist: "Lata Mangeshkar & Mohd.Rafi" },
+    //{ id: "hR0MOXXNCGA", title: "Chand Si Mehbooba Ho Meri", artist: "Mukesh" },
+    //{ id: "hEatV9WPK-o", title: "Yeh Reshmi Zulfein", artist: "Mohammed Rafi" },
+    //{ id: "VueN49P7JyU", title: "Yeh Chand Sa Roshan Chehra", artist: "Mohammed Rafi" },
+    //{ id: "1lyJyjSezC8", title: "Chhup Gaye Sare Nazare", artist: "Lata Mangeshkar & Mohd.Rafi" },
     { id: "ieu6xnwJxdA", title: "Kitaben Bahut Si", artist: "Asha Bhosle & Vinod Rathod" },
     { id: "eM8Mjuq4MwQ", title: "Aankhein Khuli", artist: "Lata Mangeshkar, Udit Narayan" },
     { id: "Mo5tQDcs__g", title: "Aao Milo Chalen", artist: "Shaan" },
@@ -17,11 +17,11 @@ const playlist = [
     { id: "RBX_29oGqec", title: "Chale Jaise Hawaien", artist: "K.K., Vasundhara Das" },
     { id: "lK7j4q9vVpE", title: "Tu Tu Hai Wahi", artist: "Asha Bhosle, Kishore Kumar" },
     { id: "7dO_MS9tZ5E", title: "Dekha Ek Khwab", artist: "Kishore Kumar, Lata Mangeshkar" },
-    { id: "8drSZlOo3Uo", title: "Chehra Hai Ya Chand Khila Hai", artist: "R.D.Burman" },
+    //{ id: "8drSZlOo3Uo", title: "Chehra Hai Ya Chand Khila Hai", artist: "R.D.Burman" },
     { id: "9PdSmDRGIwM", title: "Mere Sapno Ki Rani", artist: "Kishore Kumar" },
     { id: "3wGLsjgTx4c", title: "Likhe Jo Khat Tujhe(New)", artist: "Sanam" },
-    { id: "i8cm_ide9EY", title: "Ude jab jab zulfen teri Teri", artist: "Mohammed Rafi | Asha Bhosle" },
-    { id: "dcFIB9GJXz4", title: "Ajab Si", artist: "Vishal-Shekhar" }
+    //{ id: "i8cm_ide9EY", title: "Ude jab jab zulfen teri Teri", artist: "Mohammed Rafi | Asha Bhosle" },
+   // { id: "dcFIB9GJXz4", title: "Ajab Si", artist: "Vishal-Shekhar" }
 ];
 
 let currentIndex = 0; 
@@ -142,6 +142,7 @@ function init() {
 }
 
 window.onload = init;
+
 
 
 
