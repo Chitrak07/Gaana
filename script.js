@@ -8,7 +8,8 @@ const playlist = [
     { id: "Mo5tQDcs__g", title: "Aao Milo Chalen", artist: "Shaan" },
     { id: "DA3GyfDY0Aw", title: "Tera Naam Liya Tujhe Yaad Kiya", artist: "Manhar Udhas, Anuradha Paudwal" },
     { id: "kzTWRX9Dhrg", title: "Chalte Chalte", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
-    { id: "DA3GyfDY0Aw", title: "Tera Naam Liya Tujhe Yaad Kiya", artist: "Manhar Udhas, Anuradha Paudwal" },
+    { id: "eVnG_Rqfgg4", title: "Neele Neele Ambar Par", artist: "Kishore Kumar" },
+    { id: "uqa0BvYy03I", title: "Neele Neele Ambar Par New", artist: "Sanam" },
     { id: "bC7RmYYMqTw", title: "Pairon Mein Bandhan Hai", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
     { id: "OpLD97fG9Hw", title: "Soni Soni", artist: "Udit Narayan, Jaspinder Narula, Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
     { id: "GjPGVVebVUc", title: "Zindagi Ek Safar Hai Suhana", artist: "Kishore Kumar" },
@@ -141,6 +142,7 @@ function init() {
 }
 
 window.onload = init;
+
 
 
 
