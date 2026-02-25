@@ -30,6 +30,7 @@ let isShuffle = false;
 let ytPlayer;
 let currentFilter = 'All';
 let likedSongs = [];
+let progressInterval;
 
 try { likedSongs = JSON.parse(localStorage.getItem('liked_songs')) || []; } 
 catch (e) { likedSongs = []; }
@@ -78,9 +79,13 @@ function updateSongUI(index) {
     document.getElementById('song-trivia').innerText = song.trivia || "A great track to vibe to!";
     document.getElementById('bg-image').style.backgroundImage = `url('https://img.youtube.com/vi/${song.id}/maxresdefault.jpg')`;
     
+    // Reset seek bar visually
+    document.getElementById('seek-bar').value = 0;
+    document.getElementById('current-time').innerText = "0:00";
+
     updateLikeButtonUI();
 
-    // NEW: Update Phone Lock Screen Metadata
+    // Update Phone Lock Screen Metadata
     if ('mediaSession' in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({
             title: song.title,
@@ -122,7 +127,7 @@ document.addEventListener('keydown', (e) => {
     if(document.activeElement.id === 'search-bar') return;
     
     if (e.code === 'Space') {
-        e.preventDefault(); // Stop page from scrolling down
+        e.preventDefault(); 
         togglePlayPause();
     } else if (e.code === 'ArrowRight') {
         playNext();
@@ -131,7 +136,7 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// 6. CONTROLS
+// 6. CONTROLS & SEEK BAR
 function togglePlayPause() {
     if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') return;
     const state = ytPlayer.getPlayerState();
@@ -152,13 +157,43 @@ function onPlayerStateChange(event) {
     
     if (event.data === YT.PlayerState.PLAYING) {
         playBtn.innerText = "⏸";
+        progressInterval = setInterval(updateSeekBar, 500); // Start moving seek bar
     } else {
         playBtn.innerText = "▶️";
+        clearInterval(progressInterval); // Stop moving seek bar
     }
+    
     if (event.data === YT.PlayerState.ENDED) playNext();
 }
 
-// 7. LISTS, FILTERS, LIKES, & SHARE (Unchanged logic)
+function updateSeekBar() {
+    if (ytPlayer && ytPlayer.getPlayerState() === YT.PlayerState.PLAYING) {
+        const currentTime = ytPlayer.getCurrentTime();
+        const duration = ytPlayer.getDuration();
+        
+        const seekBar = document.getElementById('seek-bar');
+        seekBar.max = duration; 
+        seekBar.value = currentTime; 
+
+        document.getElementById('current-time').innerText = formatTime(currentTime);
+        document.getElementById('total-time').innerText = formatTime(duration);
+    }
+}
+
+function seekVideo(value) {
+    if (ytPlayer) {
+        ytPlayer.seekTo(value, true); 
+        document.getElementById('current-time').innerText = formatTime(value);
+    }
+}
+
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// 7. LISTS, FILTERS, LIKES, & SHARE 
 function updateSongList() {
     const container = document.getElementById('recommendations');
     const query = document.getElementById('search-bar') ? document.getElementById('search-bar').value.toLowerCase() : '';
