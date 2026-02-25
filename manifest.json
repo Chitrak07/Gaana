@@ -1,0 +1,16 @@
+{
+  "name": "Aaj Ka Gaana",
+  "short_name": "Gaana",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#ff4757",
+  "description": "Rozana ek naya gaana aur aapki personal vibe playlist!",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3011/3011236.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
