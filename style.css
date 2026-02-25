@@ -20,8 +20,8 @@ body {
     justify-content: center;
     align-items: center;
     overflow-y: auto; 
-    overflow-x: hidden; /* Prevents the whole screen from sliding left/right */
-    width: 100vw; /* Locks the body width */
+    overflow-x: hidden; 
+    width: 100vw; 
     padding: 40px 0;
 }
 
@@ -81,17 +81,36 @@ body {
     top: 0; left: 0; width: 100%; height: 100%;
 }
 
-/* Custom Player Controls */
+/* --- Custom Player Controls --- */
+.custom-controls-wrapper {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.seek-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 0.75rem;
+    color: #ccc;
+}
+
+#seek-bar {
+    flex-grow: 1;
+    accent-color: var(--accent);
+    cursor: pointer;
+    height: 4px;
+}
+
 .custom-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin-bottom: 1.5rem;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
 }
 
 #play-pause-btn {
@@ -117,6 +136,23 @@ body {
 }
 
 #volume-slider { width: 100%; accent-color: var(--accent); cursor: pointer; }
+
+/* --- Trivia Box Styles --- */
+.trivia-box {
+    background: rgba(255, 71, 87, 0.1);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    border-radius: 12px;
+    padding: 10px 15px;
+    margin-bottom: 1.5rem;
+    font-size: 0.75rem;
+    color: #ffdce0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1.4;
+}
+.trivia-box span { font-size: 1.2rem; }
 
 /* Title Row & Action Buttons */
 .song-info { margin-bottom: 1rem; }
@@ -161,7 +197,7 @@ body {
 
 .filters {
     display: flex;
-    flex-wrap: nowrap; /* Keeps tags in a single row */
+    flex-wrap: nowrap; 
     gap: 8px;
     overflow-x: auto;
     padding-bottom: 10px;
@@ -172,7 +208,7 @@ body {
 .filters::-webkit-scrollbar { display: none; }
 
 .filter-btn {
-    flex: 0 0 auto; /* Prevents tags from squishing */
+    flex: 0 0 auto; 
     background: var(--glass);
     border: 1px solid var(--border);
     color: white;
@@ -213,7 +249,7 @@ h3 { font-size: 0.9rem; color: var(--accent); text-align: left; }
 
 .horizontal-list {
     display: flex;
-    flex-wrap: nowrap; /* Keeps songs in a single row */
+    flex-wrap: nowrap; 
     gap: 12px;
     overflow-x: auto;
     padding: 10px 0;
@@ -224,7 +260,7 @@ h3 { font-size: 0.9rem; color: var(--accent); text-align: left; }
 .horizontal-list::-webkit-scrollbar { display: none; }
 
 .mini-card {
-    flex: 0 0 auto; /* Prevents cards from breaking layout */
+    flex: 0 0 auto; 
     width: 120px; 
     text-align: left;
     cursor: pointer;
@@ -250,20 +286,3 @@ h3 { font-size: 0.9rem; color: var(--accent); text-align: left; }
 }
 
 .footer-note { font-size: 0.8rem; color: #888; margin-top: 2rem; }
-
-/* --- NEW: Trivia Box Styles --- */
-.trivia-box {
-    background: rgba(255, 71, 87, 0.1);
-    border: 1px solid rgba(255, 71, 87, 0.3);
-    border-radius: 12px;
-    padding: 10px 15px;
-    margin-bottom: 1.5rem;
-    font-size: 0.75rem;
-    color: #ffdce0;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    line-height: 1.4;
-}
-.trivia-box span { font-size: 1.2rem; }
