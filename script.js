@@ -27,10 +27,23 @@ const playlist = [
     { id: "dcFIB9GJXz4", title: "Ajab Si", artist: "Vishal-Shekhar" }
 ];
 
-let currentIndex = 0; 
-let isShuffle = false; // Track if shuffle mode is ON or OFF
 
-// 1. Play Specific Song by Index
+let currentIndex = 0; 
+let isShuffle = false;
+let ytPlayer; // Will hold the YouTube player instance
+
+// 1. Load the YouTube Iframe API dynamically
+const tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+const firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 2. This function is automatically called by YouTube when its API is ready
+function onYouTubeIframeAPIReady() {
+    init(); // Start the app only after YouTube is ready
+}
+
+// 3. Play Specific Song by Index
 function playSelected(index) {
     currentIndex = index;
     const song = playlist[currentIndex];
@@ -39,16 +52,34 @@ function playSelected(index) {
     document.getElementById('song-artist').innerText = song.artist;
     document.getElementById('bg-image').style.backgroundImage = `url('https://img.youtube.com/vi/${song.id}/maxresdefault.jpg')`;
     
-    // Embed the YouTube Video
-    document.getElementById('player').innerHTML = `
-        <iframe width="100%" height="100%" 
-            src="https://www.youtube.com/embed/${song.id}?autoplay=1&rel=0" 
-            frameborder="0" allowfullscreen></iframe>`;
+    if (ytPlayer) {
+        // If player already exists, load new video
+        ytPlayer.loadVideoById(song.id);
+    } else {
+        // Create player for the first time
+        ytPlayer = new YT.Player('player', {
+            videoId: song.id,
+            playerVars: {
+                'autoplay': 1, // Note: Browsers may still require a user click for the very first play
+                'rel': 0
+            },
+            events: {
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
             
     updateSongList(); // Refresh the bottom list
 }
 
-// 2. Toggle Shuffle ON/OFF
+// 4. Auto-play next song when current finishes
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.ENDED) {
+        playNext();
+    }
+}
+
+// 5. Toggle Shuffle ON/OFF
 function toggleShuffle() {
     isShuffle = !isShuffle;
     const btn = document.getElementById('shuffle-toggle-btn');
@@ -62,16 +93,14 @@ function toggleShuffle() {
     }
 }
 
-// 3. Next and Previous Logic (with Shuffle Support)
+// 6. Next and Previous Logic
 function playNext() {
     let nextIndex;
     if (isShuffle) {
-        // Pick a random song that isn't the currently playing one
         do {
             nextIndex = Math.floor(Math.random() * playlist.length);
         } while (nextIndex === currentIndex && playlist.length > 1);
     } else {
-        // Play sequential next
         nextIndex = (currentIndex + 1) % playlist.length;
     }
     playSelected(nextIndex);
@@ -80,34 +109,34 @@ function playNext() {
 function playPrev() {
     let prevIndex;
     if (isShuffle) {
-        // Pick a random song that isn't the currently playing one
         do {
             prevIndex = Math.floor(Math.random() * playlist.length);
         } while (prevIndex === currentIndex && playlist.length > 1);
     } else {
-        // Play sequential previous
         prevIndex = (currentIndex - 1 + playlist.length) % playlist.length;
     }
     playSelected(prevIndex);
 }
 
-// 4. Update the horizontal list (Shows all songs except the current one)
+// 7. Update the horizontal list (Cleaned up the mapping logic)
 function updateSongList() {
     const container = document.getElementById('recommendations');
     
-    const listHTML = playlist.map((song, index) => {
-        if (index === currentIndex) return ''; // Skip the playing song
-        return `
-        <div class="mini-card" onclick="playSelected(${index})"> 
-            <img src="https://img.youtube.com/vi/${song.id}/mqdefault.jpg">
-            <p><strong>${song.title}</strong></p>
-        </div>`;
-    }).join('');
+    // Filter out the currently playing song, then map the rest to HTML
+    const listHTML = playlist
+        .map((song, index) => ({ song, index }))
+        .filter(item => item.index !== currentIndex)
+        .map(item => `
+        <div class="mini-card" onclick="playSelected(${item.index})"> 
+            <img src="https://img.youtube.com/vi/${item.song.id}/mqdefault.jpg">
+            <p><strong>${item.song.title}</strong></p>
+        </div>`)
+        .join('');
     
     container.innerHTML = listHTML;
 }
 
-// 5. History Tracking
+// 8. History Tracking
 function handleHistory(todaysSong) {
     let history = JSON.parse(localStorage.getItem('vibe_history')) || {};
     const todayStr = new Date().toDateString();
@@ -123,7 +152,7 @@ function handleHistory(todaysSong) {
     if (history[yesterdayStr]) {
         const pastSong = history[yesterdayStr];
         historyBox.innerHTML = `
-            <div class="mini-card" style="cursor: default;"> 
+            <div class="mini-card" onclick="playSelected(playlist.findIndex(s => s.id === '${pastSong.id}'))" style="cursor: pointer;"> 
                 <img src="https://img.youtube.com/vi/${pastSong.id}/mqdefault.jpg">
                 <p><strong>${pastSong.title}</strong></p>
             </div>`;
@@ -132,27 +161,66 @@ function handleHistory(todaysSong) {
     }
 }
 
-// 6. Main Init
+// 9. Main Init
 function init() {
     const now = new Date();
     const dateOptions = { weekday: 'long', day: 'numeric', month: 'short' };
     document.getElementById('date-display').innerText = now.toLocaleDateString('en-GB', dateOptions);
 
+    // Calculate Daily Song
     currentIndex = Math.floor(now.getTime() / (1000 * 60 * 60 * 24)) % playlist.length; 
     
     playSelected(currentIndex);
     handleHistory(playlist[currentIndex]);
 }
 
-window.onload = init;
+// NEW: Search functionality
+function searchSongs() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const container = document.getElementById('recommendations');
+    const listTitle = document.getElementById('list-title');
 
+    // If the search is empty, go back to the default list
+    if (query.trim() === '') {
+        listTitle.innerText = 'Aur Gaane 🎧';
+        updateSongList();
+        return;
+    }
 
+    // Change title to indicate search mode
+    listTitle.innerText = 'Search Results 🔍';
 
+    // Filter playlist based on song title OR artist name
+    const results = playlist
+        .map((song, index) => ({ song, index })) // Keep original index for playing
+        .filter(item => 
+            item.song.title.toLowerCase().includes(query) || 
+            item.song.artist.toLowerCase().includes(query)
+        );
 
+    // If no songs match the search
+    if (results.length === 0) {
+        container.innerHTML = `<p style="font-size: 0.8rem; color: #ccc; padding: 10px;">Koi gaana nahi mila 😔</p>`;
+        return;
+    }
 
+    // Render the matching songs
+    const listHTML = results.map(item => `
+        <div class="mini-card" onclick="playFromSearch(${item.index})"> 
+            <img src="https://img.youtube.com/vi/${item.song.id}/mqdefault.jpg">
+            <p><strong>${item.song.title}</strong></p>
+            <p style="font-size: 0.6rem; color: #aaa;">${item.song.artist}</p>
+        </div>
+    `).join('');
 
+    container.innerHTML = listHTML;
+}
 
+// NEW: Helper to play song from search and reset the search bar
+function playFromSearch(index) {
+    document.getElementById('search-bar').value = ''; // Clear search bar
+    document.getElementById('list-title').innerText = 'Aur Gaane 🎧'; // Reset title
+    playSelected(index);
+}
 
-
-
-
+// Note: Removed window.onload = init; because YouTube's onYouTubeIframeAPIReady handles starting the app now.
