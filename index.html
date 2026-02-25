@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <meta name="theme-color" content="#121212">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3011/3011236.png">
+    
     <title>Aaj Ka Gaana</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,12 +39,17 @@
             </div>
         </div>
 
+        <div class="trivia-box" id="trivia-box">
+            <span>💡</span>
+            <p id="song-trivia">Loading fun fact...</p>
+        </div>
+
         <div class="song-info">
             <div class="title-row">
                 <h2 id="song-title">Loading...</h2>
                 <div class="action-btns">
                     <button id="like-btn" onclick="toggleLike()">🤍</button>
-                    <button id="share-btn" onclick="shareSong()">📤</button>
+                    <button id="share-btn" onclick="shareSong()">📤 Share</button>
                 </div>
             </div>
             <p id="song-artist">Bas ek second ruk jao.</p>
@@ -49,8 +59,7 @@
             <input type="text" id="search-bar" placeholder="Gaana ya Singer search karo..." onkeyup="searchSongs()">
         </div>
 
-        <div class="filters" id="filters-container">
-            </div>
+        <div class="filters" id="filters-container"></div>
 
         <div class="extra-sections">
             <div class="section-header">
