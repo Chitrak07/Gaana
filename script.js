@@ -10,7 +10,7 @@ const playlist = [
     { id: "kzTWRX9Dhrg", title: "Chalte Chalte", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
     { id: "eVnG_Rqfgg4", title: "Neele Neele Ambar Par", artist: "Kishore Kumar" },
     { id: "uqa0BvYy03I", title: "Neele Neele Ambar Par New", artist: "Sanam" },
-    { id: "bN_Gv0TPVCU", title: "Tere Nainon Ke Main Deep Jalaoonga, artist: "Lata Mangeshkar, Mohammed Rafi" },
+    { id: "bN_Gv0TPVCU", title: "Tere Nainon Ke Main Deep Jalaoonga", artist: "Lata Mangeshkar, Mohammed Rafi" },
     { id: "bC7RmYYMqTw", title: "Pairon Mein Bandhan Hai", artist: "Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
     { id: "OpLD97fG9Hw", title: "Soni Soni", artist: "Udit Narayan, Jaspinder Narula, Udbhav, Manohar Shetty, Ishaan, Shweta Pandit, Sonali Bhatawdekar, Pritha Mazumdar" },
     { id: "GjPGVVebVUc", title: "Zindagi Ek Safar Hai Suhana", artist: "Kishore Kumar" },
@@ -143,6 +143,7 @@ function init() {
 }
 
 window.onload = init;
+
 
 
 
