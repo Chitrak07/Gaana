@@ -1,4 +1,5 @@
 const playlist = [
+    { id: "7zEx0AJguSM", title: "Rabba Mehar Kari ", artist: "Darshan Raval" },
     { id: "DoaE_6Y2_8I", title: "Morni ", artist: "Darshan Raval" },
     { id: "hR0MOXXNCGA", title: "Chand Si Mehbooba Ho Meri", artist: "Mukesh" },
     { id: "hEatV9WPK-o", title: "Yeh Reshmi Zulfein", artist: "Mohammed Rafi" },
@@ -144,6 +145,7 @@ function init() {
 }
 
 window.onload = init;
+
 
 
 
