@@ -1,7 +1,7 @@
 // 1. PLAYLIST WITH TRIVIA
 const playlist = [
     { id: "7zEx0AJguSM", title: "Rabba Mehar Kari", artist: "Darshan Raval", tags: ["New Hits", "Romantic"], trivia: "Darshan Raval has gained millions of fans for his soulful romantic tracks." },
-    { id: "vzlXfZlH5dk", title: "Main Koi Aisa Geet Gaoon", artist: "Alka Yagnik, Abhijeet Bhattacharya", tags: ["Classic 90s", "Romantic"], trivia: "This beautiful love song captures pure emotions, innocence, and the magic of 90’s Hindi cinema." },
+    { id: "vzlXfZlH5dk", title: "Main Koi Aisa Geet Gaoon", artist: "Alka Yagnik, Abhijeet Bhattacharya", tags: ["90s", "Romantic"], trivia: "This beautiful love song captures pure emotions, innocence, and the magic of 90’s Hindi cinema." },
     { id: "DoaE_6Y2_8I", title: "Morni", artist: "Darshan Raval", tags: ["New Hits", "Upbeat"], trivia: "A perfect pop anthem to get you dancing!" },
     { id: "hR0MOXXNCGA", title: "Chand Si Mehbooba", artist: "Mukesh", tags: ["Classic 70s", "Romantic"], trivia: "Mukesh was known as the 'Man with the Golden Voice'." },
     { id: "hEatV9WPK-o", title: "Yeh Reshmi Zulfein", artist: "Mohammed Rafi", tags: ["Classic 70s", "Romantic"], trivia: "Mohammed Rafi recorded over 7,000 songs in his lifetime." },
@@ -311,4 +311,5 @@ function shareSong() {
     if (navigator.share) navigator.share({ title: 'Aaj Ka Gaana 🎵', text: `Meri vibe abhi '${song.title}' ki hai. Sun ke dekho! 🎧`, url: window.location.href }).catch(console.error);
     else alert("Aapka browser share support nahi karta. 😢");
 }
+
 
