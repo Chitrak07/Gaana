@@ -1,5 +1,6 @@
 // 1. PLAYLIST WITH TRIVIA
 const playlist = [
+    { id: "udgrClXV26Y", title: "Dil Ka Jo Haal Hai", artist: "Abhijeet Bhattacharya, Shreya Ghoshal", tags: ["10s", "Romantic"], trivia: "Presenting Dil Ka Jo Haal Hai (Lyrical) from the movie Besharam." },
     { id: "JQoSSJDZxOo", title: "Rimjhim Gire Sawan", artist: "Kishore Kumar", tags: ["Classic 70s", "Romantic"], trivia: "The film was signed years prior when Amitabh was yet to find stardom." },
     { id: "6C7R_CUJgHQ", title: "Rimjhim Gire Sawan", artist: "Lata Mangeshkar", tags: ["Classic 70s", "Romantic"], trivia: "The film was signed years prior when Amitabh was yet to find stardom." },
     { id: "7zEx0AJguSM", title: "Rabba Mehar Kari", artist: "Darshan Raval", tags: ["New Hits", "Romantic"], trivia: "Darshan Raval has gained millions of fans for his soulful romantic tracks." },
@@ -313,6 +314,7 @@ function shareSong() {
     if (navigator.share) navigator.share({ title: 'Aaj Ka Gaana 🎵', text: `Meri vibe abhi '${song.title}' ki hai. Sun ke dekho! 🎧`, url: window.location.href }).catch(console.error);
     else alert("Aapka browser share support nahi karta. 😢");
 }
+
 
 
 
